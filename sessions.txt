@@ -1,0 +1,42 @@
+Bitanga
+Mendoza
+Martinez
+
+
+Practice 5-04
+
+1. What function do we use to start a session?
+
+
+A session is started with the session_start() function.
+
+Session variables are set with the PHP global variable: $_SESSION.
+
+
+
+session_start(array $options = []): bool
+session_start() creates a session or resumes the current one based on a session identifier passed via a GET or POST request, or passed via a cookie.
+
+When session_start() is called or when a session auto starts, PHP will call the open and read session save handlers. These will either be a built-in save handler provided by default or by PHP extensions (such as SQLite or Memcached); or can be custom han
+
+To use a named session, call session_name() before calling session_start().
+
+When session.use_trans_sid is enabled, the session_start() function will register an internal output handler for URL rewriting.
+
+If a user uses ob_gzhandler or similar with ob_start(), the function order is important for proper output. For example, ob_gzhandler must be registered before starting the session.
+
+
+
+
+
+2. Where are these session variables stored? 
+
+By default, session data is stored in the server's /tmp directory in files that are 
+named sess_ followed by a unique alphanumeric string (the session identifier).
+
+The location of the $_SESSION variable storage is determined by PHP's session.save_path configuration. 
+Usually this is /tmp on a Linux/Unix system. Use the phpinfo() function to view your particular settings if not 100% sure by creating a file with this content in the DocumentRoot of your domain:
+
+<?php
+    phpinfo();
+?>
